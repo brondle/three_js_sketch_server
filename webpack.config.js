@@ -5,7 +5,7 @@ const webpack = require('webpack')
 const CopyPlugin = require('copy-webpack-plugin')
 const fs = require('fs');
 const entryMap = {};
-let customPaths = ['','tower']
+let customPaths = ['']
 for (let c_path of customPaths) {
 fs.readdirSync(path.resolve(__dirname, 'src/js/' + c_path))
     .filter((f) => fs.lstatSync(path.resolve(__dirname, 'src/js/' + c_path), '/' + f).isDirectory() && f.indexOf('sketch') >= 0)
@@ -46,7 +46,7 @@ module.exports = (env) => {
               chunkId
 
         }},
-      title: 'ThreeJS Playground',
+        title: 'ThreeJS Playground',
         template: path.join(__dirname, '/src/html/index.html'),
         path: path.resolve(__dirname, './dist/'),
         filename: '[name]/index.html',
