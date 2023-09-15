@@ -86,26 +86,7 @@ let phaseMult = 8
 
 			transformAux1 = new Ammo.btTransform();
 			tempBtVec3_1 = new Ammo.btVector3( 0, 0, 0 );
-				heightData = generateHeight( terrainWidth, terrainDepth, terrainMinHeight, terrainMaxHeight );
-				geometry.rotateX( - Math.PI / 2 );
-			geometry.rotateY( - Math.PI/2)
-createTerrain()
-
-groundShape = createTerrainShape();
-				groundTransform = new Ammo.btTransform();
-				groundTransform.setIdentity();
-			// Shifts the terrain, since bullet re-centers it on its bounding box.
-				groundTransform.setOrigin( new Ammo.btVector3( 0, ( terrainMaxHeight + terrainMinHeight ) / 2, 0 ) );
-				groundMass = 100;
-				groundLocalInertia = new Ammo.btVector3( 0, 0, 0 );
-				groundMotionState = new Ammo.btDefaultMotionState( groundTransform );
-				groundShape.calculateLocalInertia(groundMass, groundLocalInertia)
-
-				groundBody = new Ammo.btRigidBody( new Ammo.btRigidBodyConstructionInfo( groundMass, groundMotionState, groundShape, groundLocalInertia ) );
-				groundBody.setRestitution(1.5)
-				groundBody.setDamping(0.8, 0)
-				physicsWorld.addRigidBody( groundBody );
-
+        return physicsWorld;
 
 		}
 
@@ -124,8 +105,6 @@ groundShape = createTerrainShape();
 			importSTLModel('/three/models/Crab_t.stl', crabMat, addBody)
       console.log('adding gun');
        let gun = importGLTFModel('/three/models/ar-181.glb', addGun)
-
-			// Head
 		}
 function processClick() {
 
@@ -756,4 +735,4 @@ groundShape = createTerrainShape();
 			}
 
 
-export { initPhysics, createPhysicsObjects, initInput, updatePhysics, processClick}
+export { initPhysics, createParalellepipedWithPhysics, createRigidBody, createPhysicsObjects, initInput, updatePhysics, processClick}
